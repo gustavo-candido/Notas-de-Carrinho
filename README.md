@@ -1,9 +1,9 @@
 # Notas de carrinho
 
-[![Author](https://img.shields.io/badge/Author-Candido-%23554FA0)](https://github.com/gustavo-candido)
-[![Languages](https://img.shields.io/github/languages/count/gustavo-candido/Notas-de-Carrinho?color=%23554FA0)](#)
-[![Top Language](https://img.shields.io/github/languages/top/gustavo-candido/Notas-de-Carrinho?color=%20%23554FA0)](#)
-[![Contributors](https://img.shields.io/github/contributors/gustavo-candido/Notas-de-Carrinho?color=%23554FA0)](#)
+[![Author](https://img.shields.io/badge/Author-Candido-%235A70ED)](https://github.com/gustavo-candido)
+[![Languages](https://img.shields.io/github/languages/count/gustavo-candido/Notas-de-Carrinho?color=%235A70ED)](#)
+[![Top Language](https://img.shields.io/github/languages/top/gustavo-candido/Notas-de-Carrinho?color=%20%235A70ED)](#)
+[![Contributors](https://img.shields.io/github/contributors/gustavo-candido/Notas-de-Carrinho?color=%235A70ED)](#)
 
 ---
 ## About
