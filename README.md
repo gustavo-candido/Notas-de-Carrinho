@@ -27,7 +27,7 @@
    <a href="https://reactnative.dev/">
       <img src=".github/techs/react-native.png" width="50"/>
    </a>
-   <a href="https://styled-components.com/">
+   <a href="https://expo.io/">
       <img src=".github/techs/expo.png" width="70"/>
    </a>
    <a href="https://styled-components.com/">
