@@ -28,6 +28,9 @@
       <img src=".github/techs/react-native.png" width="50"/>
    </a>
    <a href="https://styled-components.com/">
+      <img src=".github/techs/expo.png" width="70"/>
+   </a>
+   <a href="https://styled-components.com/">
       <img src=".github/techs/styled-components.png" width="50"/>
    </a>
 
