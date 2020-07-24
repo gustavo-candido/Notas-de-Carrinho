@@ -7,8 +7,9 @@ import formatValue from '../../../utils/formatValue';
 
 interface CartForm {
   updatePrice: React.Dispatch<React.SetStateAction<number>>;
+  updateQuantity: React.Dispatch<React.SetStateAction<number>>;
 }
-const UnitForm: React.FC<CartForm> = ({ updatePrice }) => {
+const UnitForm: React.FC<CartForm> = ({ updatePrice, updateQuantity }) => {
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('1');
 
@@ -18,6 +19,10 @@ const UnitForm: React.FC<CartForm> = ({ updatePrice }) => {
   useEffect(() => {
     updatePrice(Number(price) * Number(quantity));
   }, [price, quantity, updatePrice]);
+
+  useEffect(() => {
+    updateQuantity(Number(quantity));
+  }, [quantity, updateQuantity]);
 
   return (
     <>

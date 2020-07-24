@@ -15,7 +15,7 @@ import {
   FinishShopButtomText,
 } from './styles';
 
-import { loadList, saveList } from '../../utils/storage';
+import { loadList } from '../../utils/storage';
 import formatValue from '../../utils/formatValue';
 import Header from '../../components/Header';
 import ItemCart from '../ItemCart';
@@ -170,8 +170,8 @@ const Cart: React.FC = () => {
 
   const handleNavigatorItem = useCallback(
     (product: string) => {
-      setCurrentProduct(product);
       handleOpenItemModal();
+      setCurrentProduct(product);
     },
     [handleOpenItemModal]
   );

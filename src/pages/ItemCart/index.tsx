@@ -31,6 +31,7 @@ const ItemCart: React.FC<ItemCartProps> = ({ product, closeModal }) => {
   const units = ['unid.', 'kg'];
   const [currentUnit, setCurrentUnit] = useState('unid.');
   const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
 
   const formattedPrice = useMemo(() => formatValue(price), [price]);
 
@@ -47,10 +48,10 @@ const ItemCart: React.FC<ItemCartProps> = ({ product, closeModal }) => {
   const CurrentForm = useCallback(() => {
     switch (currentUnit) {
       case 'unid.':
-        return <UnitForm updatePrice={setPrice} />;
+        return <UnitForm updatePrice={setPrice} updateQuantity={setQuantity} />;
 
       case 'kg':
-        return <KgForm updatePrice={setPrice} />;
+        return <KgForm updatePrice={setPrice} updateQuantity={setQuantity} />;
 
       default:
         break;
