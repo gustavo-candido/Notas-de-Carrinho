@@ -15,7 +15,7 @@ import {
   FinishShopButtomText,
 } from './styles';
 
-import { loadList } from '../../utils/storage';
+import { loadList, saveList } from '../../utils/storage';
 import formatValue from '../../utils/formatValue';
 import Header from '../../components/Header';
 
@@ -29,14 +29,14 @@ export interface Product {
   price: number;
   catch: boolean;
   quantity: number;
-  unity: string;
+  unit: string;
 }
 
 interface ProductFormatted extends Product {
   formattedPrice: string;
 }
 
-const Shopping: React.FC = () => {
+const Cart: React.FC = () => {
   const route = useRoute();
   const { id: listId } = route.params as RouteParams;
   const navigation = useNavigation();
@@ -54,7 +54,7 @@ const Shopping: React.FC = () => {
           name: 'Arroz',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: true,
@@ -62,7 +62,7 @@ const Shopping: React.FC = () => {
           name: 'Feijão',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -70,7 +70,7 @@ const Shopping: React.FC = () => {
           name: 'Farofa pronta yoki ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -78,7 +78,7 @@ const Shopping: React.FC = () => {
           name: 'Detergente ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -86,7 +86,7 @@ const Shopping: React.FC = () => {
           name: 'Batata palha ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -94,7 +94,7 @@ const Shopping: React.FC = () => {
           name: 'Guardanapo ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -102,7 +102,7 @@ const Shopping: React.FC = () => {
           name: 'Toddy',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -110,7 +110,7 @@ const Shopping: React.FC = () => {
           name: 'Leite ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -118,7 +118,7 @@ const Shopping: React.FC = () => {
           name: 'Molho de extrato ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -126,7 +126,7 @@ const Shopping: React.FC = () => {
           name: 'Pão de forma',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
         {
           catch: false,
@@ -134,7 +134,7 @@ const Shopping: React.FC = () => {
           name: 'Bolacha Mabel ',
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         },
       ]);
     };
@@ -161,9 +161,12 @@ const Shopping: React.FC = () => {
     navigation.goBack();
   }, [navigation]);
 
-  const handleNavigatorItem = useCallback(() => {
-    navigation.navigate('ItemCart');
-  }, [navigation]);
+  const handleNavigatorItem = useCallback(
+    (productId: string) => {
+      navigation.navigate('ItemCart', { listId, productId });
+    },
+    [navigation]
+  );
 
   return (
     <Component>
@@ -187,7 +190,7 @@ const Shopping: React.FC = () => {
             <TouchableOpacity
               style={{ paddingHorizontal: 20 }}
               onLongPress={() => {
-                handleNavigatorItem();
+                handleNavigatorItem(productFormatted.id);
               }}
             >
               <View
@@ -223,7 +226,7 @@ const Shopping: React.FC = () => {
                         color: '#BEBEBE',
                       }}
                     >
-                      {`${productFormatted.quantity}x ${productFormatted.unity}`}
+                      {`${productFormatted.quantity}x ${productFormatted.unit}`}
                     </Text>
                   </View>
 
@@ -266,7 +269,7 @@ const Shopping: React.FC = () => {
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
-                    handleNavigatorItem();
+                    handleNavigatorItem(productFormatted.id);
                   }}
                 >
                   <Icon
@@ -291,4 +294,4 @@ const Shopping: React.FC = () => {
   );
 };
 
-export default Shopping;
+export default Cart;

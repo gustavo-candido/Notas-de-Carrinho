@@ -6,7 +6,7 @@ export interface Product {
   catch: boolean;
   price: number;
   quantity: number;
-  unity: string;
+  unit: string;
 }
 
 interface List {

@@ -26,7 +26,7 @@ export interface Product {
   catch: boolean;
   price: number;
   quantity: number;
-  unity: string;
+  unit: string;
 }
 
 interface ProductName {
@@ -64,7 +64,7 @@ const CreateNewList: React.FC = () => {
           catch: false,
           price: 0,
           quantity: 0,
-          unity: 'unid.',
+          unit: 'unid.',
         }));
 
         await saveList('@NotasDeCarrinho', {

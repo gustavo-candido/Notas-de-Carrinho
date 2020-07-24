@@ -19,6 +19,7 @@ const Routes: React.FC = () => {
             backgroundColor: '#f7f7fe',
           },
         }}
+        initialRouteName="ItemCart"
       >
         <AppStack.Screen name="Home" component={Home} />
         <AppStack.Screen name="CreateNewList" component={CreateNewList} />
