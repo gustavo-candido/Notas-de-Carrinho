@@ -26,7 +26,6 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
   { icon, containerStyle, onSubmitEditing, rotate, ...rest },
   ref
 ) => {
-  const [inputText, setInputText] = useState('');
   const inputElementRef = useRef<TextInput>(null);
 
   useImperativeHandle(ref, () => ({
@@ -39,8 +38,6 @@ const Input: React.RefForwardingComponent<InputRef, InputProps> = (
     <Component style={containerStyle}>
       <TextInput
         ref={inputElementRef}
-        value={inputText}
-        onChangeText={setInputText}
         onSubmitEditing={onSubmitEditing || Keyboard.dismiss}
         style={{
           borderTopLeftRadius: 10,

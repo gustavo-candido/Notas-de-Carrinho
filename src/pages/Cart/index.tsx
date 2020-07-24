@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-
+import { Text, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Feather as Icon } from '@expo/vector-icons';
 
 import { useRoute, useNavigation } from '@react-navigation/native';
@@ -18,6 +18,7 @@ import {
 import { loadList, saveList } from '../../utils/storage';
 import formatValue from '../../utils/formatValue';
 import Header from '../../components/Header';
+import ItemCart from '../ItemCart';
 
 interface RouteParams {
   id: string;
@@ -41,6 +42,8 @@ const Cart: React.FC = () => {
   const { id: listId } = route.params as RouteParams;
   const navigation = useNavigation();
   const [products, Setproducts] = useState<Product[]>([]);
+  const [itemModal, setItemModal] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState('');
 
   useEffect(() => {
     const loadData = async (): Promise<void> => {
@@ -161,15 +164,24 @@ const Cart: React.FC = () => {
     navigation.goBack();
   }, [navigation]);
 
+  const handleCloseItemModal = useCallback(() => setItemModal(false), []);
+
+  const handleOpenItemModal = useCallback(() => setItemModal(true), []);
+
   const handleNavigatorItem = useCallback(
-    (productId: string) => {
-      navigation.navigate('ItemCart', { listId, productId });
+    (product: string) => {
+      setCurrentProduct(product);
+      handleOpenItemModal();
     },
-    [navigation]
+    [handleOpenItemModal]
   );
 
   return (
     <Component>
+      {itemModal && (
+        <ItemCart product={currentProduct} closeModal={handleCloseItemModal} />
+      )}
+
       <Header>
         <GoBackButton onPress={handleNavigatorBack}>
           <Icon name="chevron-left" size={20} color="#ECEFF1" />
@@ -190,7 +202,7 @@ const Cart: React.FC = () => {
             <TouchableOpacity
               style={{ paddingHorizontal: 20 }}
               onLongPress={() => {
-                handleNavigatorItem(productFormatted.id);
+                handleNavigatorItem(productFormatted.name);
               }}
             >
               <View
@@ -269,7 +281,7 @@ const Cart: React.FC = () => {
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
-                    handleNavigatorItem(productFormatted.id);
+                    handleNavigatorItem(productFormatted.name);
                   }}
                 >
                   <Icon

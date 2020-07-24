@@ -3,13 +3,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text, View, TextInput } from 'react-native';
 
 import Input from '../../../components/Input';
+import formatValue from '../../../utils/formatValue';
 
 interface CartForm {
   updatePrice: React.Dispatch<React.SetStateAction<number>>;
 }
 const UnitForm: React.FC<CartForm> = ({ updatePrice }) => {
   const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
+  const [quantity, setQuantity] = useState('1');
 
   const priceInputRef = useRef<TextInput>(null);
   const quantityInputRef = useRef<TextInput>(null);
@@ -20,13 +21,14 @@ const UnitForm: React.FC<CartForm> = ({ updatePrice }) => {
 
   return (
     <>
-      <Text style={{ marginVertical: 10, marginLeft: 4 }}>Preço</Text>
+      <Text style={{ marginVertical: 10, marginLeft: 4 }}>Preço/unid.</Text>
+
       <Input
         ref={priceInputRef}
         icon="dollar-sign"
         keyboardType="numeric"
         containerStyle={{ width: '80%' }}
-        placeholder="R$ 6,99"
+        placeholder="6.99"
         onSubmitEditing={() => {
           quantityInputRef.current?.focus();
         }}
@@ -41,6 +43,7 @@ const UnitForm: React.FC<CartForm> = ({ updatePrice }) => {
           justifyContent: 'space-between',
           width: '80%',
           marginTop: 10,
+          position: 'relative',
         }}
       >
         <Text style={{ marginLeft: 4 }}>Quantidade</Text>

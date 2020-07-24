@@ -1,15 +1,17 @@
 import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
 
 interface UnitProps {
   selected: boolean;
 }
 
 export const Component = styled.View`
-  flex: 1;
-  background: rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-items: center;
+  position: absolute;
+  z-index: 5;
 `;
 
 export const Modal = styled.View`
